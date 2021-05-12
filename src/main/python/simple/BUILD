@@ -1,15 +1,15 @@
-load("@subpar//:subpar.bzl", "par_binary")
+#load("@subpar//:subpar.bzl", "par_binary")
 load("@py2deps//:requirements.bzl", py2_requirement="requirement")
 load("@py3deps//:requirements.bzl", "requirement")
 
 
-par_binary(
-    name = 'py2foo',
-    srcs = ['py2only.py'],
-    deps = [py2_requirement("boto3"),
-            py2_requirement("itsdangerous")],
-    data = [],
-)
+#par_binary(
+#    name = 'py2foo',
+#    srcs = ['py2only.py'],
+#    deps = [py2_requirement("boto3"),
+#            py2_requirement("itsdangerous")],
+#    data = [],
+#)
 
 py_binary(
     name='py2only',
