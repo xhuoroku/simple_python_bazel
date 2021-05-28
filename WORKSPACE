@@ -7,13 +7,11 @@ http_archive(
     urls = ["https://github.com/digital-plumbers-union/rules_pyenv/archive/v0.1.4.tar.gz"],
 )
 
-load("@dpu_rules_pyenv//pyenv:defs.bzl", "pyenv_install")
-
-
-pyenv_install(
-    py2 = "2.7.18",
-    py3 = "3.9.4",
-)
+#load("@dpu_rules_pyenv//pyenv:defs.bzl", "pyenv_install")
+#pyenv_install(
+#    py2 = "2.7.18",
+#    py3 = "3.9.4",
+#)
 
 register_toolchains("//:my_toolchain")
 
@@ -31,7 +29,8 @@ pip_repositories()
 pip_import(
    name = "py2deps",
    requirements = "//:python2_requirements.txt",
-   python_interpreter_target="@pyenv//:py2/python",
+   python_interpreter="/usr/bin/python2"
+#   python_interpreter_target="@pyenv//:py2/python",
 )
 load("@py2deps//:requirements.bzl", _python2_dep_install = "pip_install")
 _python2_dep_install()
@@ -39,11 +38,11 @@ _python2_dep_install()
 
 
 load("@rules_python//python:pip.bzl", "pip_parse")
-# requirements_lock.txt.
 pip_parse(
    name = "py3deps",
    requirements_lock = "//:python3_requirements_lock.txt",
-   python_interpreter_target="@pyenv//:py3/python",
+   python_interpreter="/usr/bin/python3"
+#   python_interpreter_target="@pyenv//:py3/python",
 )
 
 # Load the starlark macro which will define your dependencies.
