@@ -23,4 +23,9 @@ $ /usr/bin/python3 bazel-bin/src/main/python/simple/py3only.zip
 [Clang 12.0.0 (clang-1200.0.32.29)]
 yay done!
 ```
+----------------------------------------------------
+#Add py_test, the test file has to be under same folder of the source folder, bazel has problem finding the module if put into separate test folder 
+```
+$ bazel test src/main/python/simple:py2test --test_output=streamed
+```
 

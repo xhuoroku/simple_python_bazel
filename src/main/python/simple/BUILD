@@ -4,6 +4,7 @@ load("@py3deps//:requirements.bzl", "requirement")
 py_binary(
     name='py2only',
     deps=[
+      ":simplelib",
       py2_requirement("boto3"),
       py2_requirement("itsdangerous"),
     ],
@@ -18,4 +19,23 @@ py_binary(
     ],
     srcs=['py3only.py'],
     python_version="PY3",
+)
+
+py_library(
+    name='simplelib',
+    srcs=[
+        'helper.py',
+    ],
+    deps=[
+        py2_requirement("boto3")
+    ],
+    visibility = [ "//visibility:public" ],
+)
+
+py_test(
+    name='py2test',
+    deps=[
+      '//src/main/python/simple:simplelib',
+    ],
+    srcs=['py2test.py']
 )
