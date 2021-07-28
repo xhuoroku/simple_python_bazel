@@ -9,7 +9,7 @@ py_binary(
       py2_requirement("itsdangerous"),
     ],
     srcs=['py2only.py'],
-    python_version="PY2",
+    python_version="PY2"
 )
 
 py_binary(
@@ -38,4 +38,13 @@ py_test(
       '//src/main/python/simple:simplelib',
     ],
     srcs=['py2test.py']
+)
+
+py_binary(
+    name='py2_simple',
+    deps=[
+      '//src/main/python/another_folder:another_lib'
+    ],
+    main='py2_simple.py',
+    srcs=['py2_simple.py', 'helper.py'],
 )

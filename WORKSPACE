@@ -29,7 +29,7 @@ pip_repositories()
 pip_import(
    name = "py2deps",
    requirements = "//:python2_requirements.txt",
-   python_interpreter="/usr/bin/python2"
+   python_interpreter="/usr/bin/python2.7"
 #   python_interpreter_target="@pyenv//:py2/python",
 )
 load("@py2deps//:requirements.bzl", _python2_dep_install = "pip_install")

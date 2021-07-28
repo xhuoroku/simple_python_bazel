@@ -7,6 +7,7 @@ def python3_only_function(parameter, *, option1=False, option2=''):
 def main(): 
 	python3_only_function(3, option1=True, option2='Hello World!')
 	print("yay done!")
+	print("\n".join(sys.path))
     
 
 if __name__ == '__main__':
